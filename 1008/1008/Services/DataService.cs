@@ -49,19 +49,20 @@ namespace _1008.Services
 		{
 			var commandString = @"
 			INSERT INTO [dbo].[hospital1]([tencode],[name],[district],[address],[phone])
-			VALUES(@十碼章,@醫院名稱,@行政區,@地址,@)";
+			VALUES(@十碼章,@醫院名稱,@行政區,@地址,@連絡電話)";
 
 			SqlConnection cn = new SqlConnection(_connectionString);
 
 			cn.Open();
 			SqlCommand command = new SqlCommand(commandString, cn);
 
-			var count=command.ExecuteNonQuery();
+			
 			command.Parameters.Add(new SqlParameter("十碼章", hospital.十碼章));
 			command.Parameters.Add(new SqlParameter("醫院名稱", hospital.醫院名稱));
 			command.Parameters.Add(new SqlParameter("行政區", hospital.行政區));
 			command.Parameters.Add(new SqlParameter("地址", hospital.地址));
 			command.Parameters.Add(new SqlParameter("連絡電話", hospital.連絡電話));
+			var count=command.ExecuteNonQuery();
 			cn.Close();
 		}
 }
